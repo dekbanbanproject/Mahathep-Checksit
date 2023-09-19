@@ -233,7 +233,8 @@ class AutorpstController extends Controller
         $datestart = $request->startdate;
         $dateend = $request->enddate;
  
-            $data_sit = DB::connection('mysql')->select('SELECT * FROM checksit_hospcu c LEFT JOIN kskdepartment k ON k.depcode = c.main_dep
+            $data_sit = DB::connection('mysql')->select('SELECT * FROM checksit_hospcu c LEFT JOIN hosxp_pcu.kskdepartment k ON k.depcode = c.main_dep
+                LEFT JOIN hosxp_pcu.pttype p ON p.pttype = c.pttype
                 WHERE c.vstdate BETWEEN "'.$datestart.'" AND "'.$dateend.'" 
             ');
             // c.vn,c.hn,c.cid,c.vstdate,c.ptname,c.pttype,c.subinscl,c.debit,c.claimcode,c.claimtype,c.hospmain,c.hometel,c.hospsub,c.main_dep,c.hmain,c.hsub,c.subinscl_name,c.staff_name,c.staff,k.department
